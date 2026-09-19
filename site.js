@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
-var yr=$('#year')||$('#yr'); if(yr) yr.textContent=new Date().getFullYear();
+var yr=$('#yr'); if(yr) yr.textContent=new Date().getFullYear();
 var items=$$('.menu>li'); function closeAll(){items.forEach(function(i){i.classList.remove('open');var a=$('a[aria-haspopup]',i);if(a)a.setAttribute('aria-expanded','false');});}
 items.forEach(function(li){var dd=$('.dd',li);if(!dd)return;var a=$('a',li);
  function open(){closeAll();li.classList.add('open');a.setAttribute('aria-expanded','true');}

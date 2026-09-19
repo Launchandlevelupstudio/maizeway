@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Program Support for Compliance-Driven, Resource-Constrained Teams | MaizeWay</title>
 <meta name="description" content="Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.">
-<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://[maizeway.com]/federal-nonprofit-delivery.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="MaizeWay"><meta property="og:title" content="Program Support for Compliance-Driven, Resource-Constrained Teams | MaizeWay"><meta property="og:description" content="Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs."><meta property="og:url" content="https://[maizeway.com]/federal-nonprofit-delivery.html">
-<meta property="og:image" content="https://[maizeway.com]/images/og-default.jpg">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Program Support for Compliance-Driven, Resource-Constrained Teams | MaizeWay"><meta name="twitter:description" content="Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs."><meta name="twitter:image" content="https://[maizeway.com]/images/og-default.jpg">
 <meta name="theme-color" content="#111e32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +39,9 @@ p{margin:0}a{color:inherit;text-decoration:none}img{max-width:100%;display:block
 .nav{background:rgba(17,30,50,.97);backdrop-filter:blur(10px);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(197,151,58,.15)}
 .nav .wrap{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;color:#fff}
+.brand-text{display:flex;flex-direction:column;gap:1px;line-height:1.15}
+.tagline{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.tagline.sm{font-size:8px;letter-spacing:1.6px}
 .mark{width:38px;height:38px;border-radius:50%;background:var(--navy-mid);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px;font-weight:700;color:var(--gold);letter-spacing:1px}
 .mark.sm{width:32px;height:32px;font-size:13px}.name{font-family:var(--serif);font-size:21px;font-weight:600}.name.sm{font-size:19px}
 .menu{display:flex;align-items:center;gap:30px;flex:1;justify-content:flex-end}.menu>li{position:relative}
@@ -83,7 +84,7 @@ li.open>.dd{display:flex}
 .hero h1{color:#fff}.hero .lede{color:rgba(255,255,255,.78);font-size:19px;max-width:600px;margin-top:22px}
 .hero .acts{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
 .hero .split{display:grid;grid-template-columns:1.05fr .8fr;gap:64px;align-items:center}
-.hero .photo{border-radius:4px;overflow:hidden;border:1px solid rgba(197,151,58,.3);max-width:340px;justify-self:end}
+.hero .photo{border-radius:4px;overflow:hidden;border:1px solid rgba(197,151,58,.3);max-width:340px;justify-self:end;margin:0}
 .hero .photo img{width:100%;height:auto;display:block}
 .hero-inner .wrap{padding-top:64px;padding-bottom:64px}.hero-inner h1{font-size:clamp(34px,4.6vw,56px)}
 /* proof */
@@ -153,7 +154,24 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 /* sticky bar */
 .stickybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--navy-dark);border-top:1px solid rgba(197,151,58,.2);gap:10px;transform:translateY(110%);transition:transform .25s}
 .stickybar.on{transform:none}.stickybar .btn{flex:1;min-height:46px;padding:0 16px}.stickybar .btn-line{flex:0 0 auto}
-
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(max-width:1100px){
+ .menu{gap:22px}.hero .split{grid-template-columns:1fr;justify-items:center;text-align:center}.hero .photo{max-width:280px;justify-self:center}.hero .acts{justify-content:center}.hero .copy{align-items:center}.hero-proof{justify-content:center}
+ .proof,.about,.svcrow,.contact,.po{grid-template-columns:1fr}.about .img{max-width:340px;order:-1}
+ .svc{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fcols{grid-template-columns:1fr 1fr}
+ .nav-phone{display:none}
+}
+@media(max-width:820px){
+ .wrap{padding:0 22px}.menu{display:none}.burger{display:flex}
+ .sec{padding:64px 0}.hero .wrap{padding-top:52px;padding-bottom:52px}.hero .lede{font-size:17px}
+ .head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
+ .g2,.g3,.nums,.steps,.cinfo{grid-template-columns:1fr}
+ .cta .wrap{flex-direction:column;align-items:flex-start;padding-top:56px;padding-bottom:56px}
+ .fcols{grid-template-columns:1fr}
+ form.f{grid-template-columns:1fr;padding:24px}.hero .acts{flex-direction:column}
+ .btn{width:100%}.menu .cta,.stickybar .btn{width:auto}.card{padding:26px}
+ .stickybar{display:flex}
+}
 
 /* packages */
 .pkg-group{margin-bottom:48px}.pkg-group:last-child{margin-bottom:0}
@@ -167,103 +185,48 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 .pkg .ticks{gap:10px;margin-top:4px}.pkg .ticks li{font-size:13px}
 .pkg-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--cream);display:flex;flex-direction:column;gap:10px}
 .pkg-bestfor{font-size:12px;font-style:italic;color:var(--text-light)}
-/* engagement timeline (homepage) */
-.engage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:eng;position:relative;margin-top:8px}
-.engage::before{content:"";position:absolute;left:6%;right:6%;top:28px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
-.engage li{position:relative;padding:0 14px 8px;text-align:center}
-.engage .dot{width:56px;height:56px;border-radius:50%;margin:0 auto 18px;background:var(--navy);border:2px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;font-weight:700;position:relative;z-index:1}
-.engage h3{font-size:18px;margin-bottom:8px;color:var(--navy)}
-.engage p{font-size:14px;line-height:1.55;color:var(--text-mid);max-width:22ch;margin:0 auto}
-.engage .when{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.sec-cream{background:var(--cream)}
-.acts-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-@media(max-width:1100px){
- .menu{gap:22px}.hero .split{grid-template-columns:1fr}.hero .photo{max-width:280px;justify-self:center;margin-inline:auto}
- .proof,.about,.svcrow,.contact,.po{grid-template-columns:1fr}.about .img{max-width:340px;order:-1;margin-inline:auto}
- .svc{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fcols{grid-template-columns:1fr 1fr}
- .nav-phone{display:none}
- .pkgs.g3{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
- .wrap{padding:0 22px}.menu{display:none}.burger{display:flex}
- .sec{padding:64px 0}.hero .wrap{padding-top:52px;padding-bottom:52px}.hero .lede{font-size:17px}
- .head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
- .g2,.g3,.nums,.steps,.cinfo,.engage,.pkgs.g3,.pkgs.g2{grid-template-columns:1fr}
- .engage::before{display:none}
- .engage li{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:8px 16px;align-items:start;padding:12px 0}
- .engage .dot{margin:0;grid-row:span 3}
- .engage p{max-width:none;margin:0}
- .cta .wrap{flex-direction:column;align-items:flex-start;padding-top:56px;padding-bottom:56px}
- .fcols{grid-template-columns:1fr}
- form.f{grid-template-columns:1fr;padding:24px}.hero .acts{flex-direction:column}
- .btn{width:100%}.menu .cta,.stickybar .btn{width:auto}.card{padding:26px}
- .stickybar{display:flex}
-}
+@media(max-width:1100px){.pkgs.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.pkgs.g3,.pkgs.g2{grid-template-columns:1fr}}
+.lede.quote{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold-light);max-width:520px}
+.pkgteaser{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pkgteaser article{background:#fff;border:1px solid rgba(197,151,58,.2);padding:28px;display:flex;flex-direction:column;gap:10px}
+.pkgteaser .n{font-family:var(--serif);font-size:14px;color:var(--gold);letter-spacing:.1em}
+.pkgteaser h3{font-size:19px}.pkgteaser h3 a:hover{color:var(--gold)}
+.pkgteaser .tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);font-style:normal}
+.pkgteaser p:not(.tag):not(.n){font-size:14px;color:var(--text-mid);flex:1}
+@media(max-width:1100px){.pkgteaser{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.pkgteaser{grid-template-columns:1fr}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://[maizeway.com]/#org", "name": "MaizeWay", "url": "https://[maizeway.com]/", "telephone": "+13013466557", "email": "[eunice@maizeway.com]", "address": {"@type": "PostalAddress", "addressLocality": "Bowie", "addressRegion": "MD", "addressCountry": "US"}, "areaServed": "Bowie, MD & the DC metro", "founder": {"@id": "https://[maizeway.com]/#founder"}, "description": "Fractional project and program management consulting for federal, nonprofit, and mission-driven organizations."}, {"@type": "Person", "@id": "https://[maizeway.com]/#founder", "name": "Eunice Maize", "jobTitle": "PMP, Business Solutions Architect", "worksFor": {"@id": "https://[maizeway.com]/#org"}, "url": "https://[maizeway.com]/about.html", "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "Project Management Professional (PMP)"}}, {"@type": "WebSite", "@id": "https://[maizeway.com]/#site", "url": "https://[maizeway.com]/", "name": "MaizeWay", "publisher": {"@id": "https://[maizeway.com]/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://[maizeway.com]/index.html"}, {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://[maizeway.com]/services.html"}, {"@type": "ListItem", "position": 3, "name": "Federal & Nonprofit Delivery Support", "item": "https://[maizeway.com]/federal-nonprofit-delivery.html"}]}, {"@type": "Service", "name": "Program Support for Compliance-Driven, Resource-Constrained Teams", "serviceType": "Program Support for Compliance-Driven, Resource-Constrained Teams", "provider": {"@id": "https://[maizeway.com]/#org"}, "areaServed": "Bowie, MD & the DC metro", "description": "Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.", "url": "https://[maizeway.com]/federal-nonprofit-delivery.html"}]}</script>
-
-<!-- ANALYTICS: needs IDs from client before launch
-  GA4 measurement ID: G-XXXXXXXX  (replace stub below)
-  Google Search Console: add verification meta when ready
-  Microsoft Clarity: YOUR_CLARITY_ID
--->
-<!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_VERIFICATION_TOKEN"> -->
-<script>
-/* GA4 stub — no-ops until a real measurement ID is set */
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-window.gtag=gtag;
-/* TODO: set GA4_ID = 'G-XXXXXXXX' from client, then uncomment:
-(function(){
-  var GA4_ID='G-XXXXXXXX';
-  if(!GA4_ID||GA4_ID.indexOf('X')>=0)return;
-  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;
-  document.head.appendChild(s);
-  gtag('js',new Date());gtag('config',GA4_ID);
-})();
-*/
-</script>
-<script>
-/* Microsoft Clarity stub — replace YOUR_CLARITY_ID when provided
-(function(c,l,a,r,i,t,y){
-  if(!i||i==='YOUR_CLARITY_ID')return;
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "YOUR_CLARITY_ID");
-*/
-</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://[maizeway.com]/#org", "name": "MaizeWay", "url": "https://[maizeway.com]/", "telephone": "+13013466557", "email": "[eunice@maizeway.com]", "address": {"@type": "PostalAddress", "addressLocality": "Bowie", "addressRegion": "MD", "addressCountry": "US"}, "areaServed": "Bowie, MD & the DC metro", "founder": {"@id": "https://[maizeway.com]/#founder"}, "description": "Operational and project management consulting for federal, nonprofit, and private-sector organizations."}, {"@type": "Person", "@id": "https://[maizeway.com]/#founder", "name": "Eunice Maize", "jobTitle": "PMP, Business Solutions Architect", "worksFor": {"@id": "https://[maizeway.com]/#org"}, "url": "https://[maizeway.com]/about.html", "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "Project Management Professional (PMP)"}}, {"@type": "WebSite", "@id": "https://[maizeway.com]/#site", "url": "https://[maizeway.com]/", "name": "MaizeWay", "publisher": {"@id": "https://[maizeway.com]/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://[maizeway.com]/index.html"}, {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://[maizeway.com]/services.html"}, {"@type": "ListItem", "position": 3, "name": "Federal & Nonprofit Delivery Support", "item": "https://[maizeway.com]/federal-nonprofit-delivery.html"}]}, {"@type": "Service", "name": "Program Support for Compliance-Driven, Resource-Constrained Teams", "serviceType": "Program Support for Compliance-Driven, Resource-Constrained Teams", "provider": {"@id": "https://[maizeway.com]/#org"}, "areaServed": "Bowie, MD & the DC metro", "description": "Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.", "url": "https://[maizeway.com]/federal-nonprofit-delivery.html"}]}</script>
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav"><div class="wrap">
- <a class="brand" href="index.html" aria-label="MaizeWay home"><span class="mark" aria-hidden="true">MW</span><span class="name">MaizeWay</span></a>
+ <a class="brand" href="index.html" aria-label="MaizeWay home"><span class="mark" aria-hidden="true">MW</span><span class="brand-text"><span class="name">MaizeWay</span><span class="tagline">Project Management Consulting</span></span></a>
  <nav aria-label="Primary"><ul class="menu">
-  <li class="active"><a href="services.html" aria-haspopup="true" aria-expanded="false">Services <svg class="caret" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd" role="menu"><a href="program-project-leadership.html" role="menuitem">Program & Project Leadership<small>I own the structure, drive the execution, and leave the operating documentation behind.</small></a><a href="project-recovery.html" role="menuitem">Project Recovery<small>Rapid assessment, a re-baselined plan, and leadership through stabilization — not just a report.</small></a><a href="federal-nonprofit-delivery.html" role="menuitem">Federal & Nonprofit Delivery Support<small>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</small></a><a href="services.html" role="menuitem" class="all">All services <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></li>
+  <li class="active"><a href="services.html" aria-haspopup="true" aria-expanded="false">Services <svg class="caret" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd" role="menu"><a href="program-project-leadership.html" role="menuitem">Program & Project Leadership<small>I own the structure, drive the execution, and leave the operating documentation behind.</small></a><a href="federal-nonprofit-delivery.html" role="menuitem">Federal & Nonprofit Delivery Support<small>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</small></a><a href="services.html" role="menuitem" class="all">All services <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></li>
   <li><a href="about.html">About</a></li>
-  <li><a class="btn btn-gold cta" href="contact.html" data-track="nav_cta">Schedule a Consultation</a></li>
+  <li><a class="btn btn-gold cta" href="contact.html" data-track="nav_cta">Book a Discovery Call</a></li>
  </ul></nav>
  <a class="nav-phone" href="tel:+13013466557">(301) 346-6557</a>
  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
- <div class="top"><a class="brand" href="index.html"><span class="mark sm" aria-hidden="true">MW</span><span class="name sm">MaizeWay</span></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+ <div class="top"><a class="brand" href="index.html"><span class="mark sm" aria-hidden="true">MW</span><span class="brand-text"><span class="name sm">MaizeWay</span><span class="tagline sm">Project Management Consulting</span></span></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
  <nav aria-label="Mobile">
   <button class="row" data-acc aria-expanded="false" aria-controls="msub"><span>Services</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-  <div class="sub" id="msub"><a href="program-project-leadership.html">Program & Project Leadership</a><a href="project-recovery.html">Project Recovery</a><a href="federal-nonprofit-delivery.html">Federal & Nonprofit Delivery Support</a><a href="services.html">All services</a></div>
+  <div class="sub" id="msub"><a href="program-project-leadership.html">Program & Project Leadership</a><a href="federal-nonprofit-delivery.html">Federal & Nonprofit Delivery Support</a><a href="services.html">All services</a></div>
   <a class="row" href="about.html">About</a>
   <a class="row" href="contact.html">Contact</a>
  </nav>
- <div class="foot"><a class="btn btn-gold" href="contact.html">Schedule a Consultation</a><div class="ln"><a href="tel:+13013466557">(301) 346-6557</a><a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a></div></div>
+ <div class="foot"><a class="btn btn-gold" href="contact.html">Book a Discovery Call</a><div class="ln"><a href="tel:+13013466557">(301) 346-6557</a><a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a></div></div>
 </div>
 
 <main id="main" tabindex="-1">
 
 <nav class="crumbs" aria-label="Breadcrumb"><div class="wrap"><ol><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li aria-current="page">Federal & Nonprofit Delivery Support</li></ol></div></nav>
-<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">Track 03</p><h1>Program Support for Compliance-Driven, Resource-Constrained Teams</h1><p class="lede">Built for environments where the reporting requirements come from outside and the team executing is small.</p><div class="acts"><a class="btn btn-gold" href="contact.html" data-track="svc_hero_cta">Request a capability discussion</a><!-- Capability statement PDF: place file at assets/maizeway-capability-statement.pdf when ready --><a class="btn btn-line" href="assets/maizeway-capability-statement.pdf" data-track="capability_statement">Download capability statement</a></div></div></section>
+<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">Track 02</p><h1>Program Support for Compliance-Driven, Resource-Constrained Teams</h1><p class="lede">Built for environments where the reporting requirements come from outside and the team executing is small.</p><div class="acts"><a class="btn btn-gold" href="contact.html" data-track="svc_hero_cta">Request a capability discussion</a></div></div></section>
 <section class="sec"><div class="wrap grid g2 po">
  <div><p class="kicker">Who needs this</p><p class="sub">Federal contractors and subcontractors, federal program offices, and nonprofits managing grants, funder reporting, or a program launch.</p></div>
  <div><p class="kicker">Problems it solves</p><p class="sub">Reporting obligations with no supporting process. Acquisition planning capacity gaps. Data calls consuming the whole team. SOPs that don't survive an audit. Grant deliverables with no delivery structure.</p></div>
@@ -273,27 +236,36 @@ window.gtag=gtag;
  <div class="grid g2"><ul class="ticks card"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Compliance-aligned SOPs</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Reporting calendar and templates</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Data call response process</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Program documentation package</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stakeholder engagement plan</li></ul>
   <div class="card"><p class="kicker">Engagement structure</p><p class="sub">Custom scope — project or retainer.</p></div></div>
 </div></section>
-<section class="sec"><div class="wrap"><div class="head"><div class="t"><h2>How to start.</h2><p class="sub">Fees are quoted after a short call, once the scope is real.</p></div></div><div class="grid g3 pkgs"><article class="pkg"><p class="pkg-kicker">Specialized &middot; CUSTOM</p><h3>Federal &amp; Nonprofit Solutions</h3><p class="pkg-desc">Tailored program and project management support for federal agencies, contractors, and mission-driven nonprofits — built around reporting obligations that come from outside and delivery teams that are often small.</p><ul class="ticks"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Portfolio &amp; program management</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Acquisition planning support</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Federal reporting &amp; data calls</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Compliance-aligned SOPs</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stakeholder engagement strategy</li></ul><div class="pkg-foot"><span class="pkg-bestfor">Best for: Federal agencies, contractors &amp; nonprofits</span><a class="more" href="contact.html">Request a proposal <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article></div></div></section>
-<section class="sec"><div class="wrap"><p class="kicker">Also</p><div class="grid g2"><a class="card link-card" href="program-project-leadership.html"><h3>Program & Project Leadership</h3><p>I own the structure, drive the execution, and leave the operating documentation behind.</p><span class="more">Details <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="card link-card" href="project-recovery.html"><h3>When a Project Is Already Off Track</h3><p>Rapid assessment, a re-baselined plan, and leadership through stabilization — not just a report.</p><span class="more">Details <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
-<section class="cta" aria-labelledby="cta-h"><div class="wrap"><div class="t"><h2 id="cta-h">Request a capability discussion.</h2><p>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</p><p class="fine">Prefer email? <a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a> · (301) 346-6557</p></div><a class="btn btn-navy" href="contact.html" data-track="band_cta">Schedule a Consultation</a></div></section>
+<section class="sec"><div class="wrap">
+ <div class="head"><div class="t"><h2>How to start.</h2></div></div>
+ <div class="grid g3 pkgs"><article class="pkg">
+ <p class="pkg-kicker">Specialized &middot; CUSTOM SCOPE</p>
+ <h3>Federal & Nonprofit Solutions</h3>
+ <p class="pkg-desc">Tailored program and project management support for federal agencies, contractors, and mission-driven nonprofits — built around reporting obligations that come from outside and delivery teams that are often small.</p>
+ <ul class="ticks"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Portfolio & program management</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Acquisition planning support</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Federal reporting & data calls</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Compliance-aligned SOPs</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stakeholder engagement strategy</li></ul>
+ <div class="pkg-foot"><span class="pkg-bestfor">Best for: Federal agencies, contractors & nonprofits</span><a class="more" href="contact.html">Request a proposal <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article></div>
+</div></section>
+<section class="sec"><div class="wrap"><p class="kicker">Also</p><div class="grid g2"><a class="card link-card" href="program-project-leadership.html"><h3>Program & Project Leadership</h3><p>I own the structure, drive the execution, and leave the operating documentation behind.</p><span class="more">Details <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+<section class="cta" aria-labelledby="cta-h"><div class="wrap"><div class="t"><h2 id="cta-h">Request a capability discussion.</h2><p>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</p><p class="fine">Prefer email? <a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a> · (301) 346-6557</p></div><a class="btn btn-navy" href="contact.html" data-track="band_cta">Book My Call</a></div></section>
 
 </main>
 
 <footer class="foot"><div class="wrap">
  <div class="fcols">
   <div class="col about"><p class="fb">MaizeWay</p><p class="fa">We streamline the work. We don't add to it.<br>Independent project &amp; program management consulting by Eunice Maize, PMP, Business Solutions Architect. Bowie, MD & the DC metro.</p><address class="fa"><a href="tel:+13013466557">(301) 346-6557</a><br><a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a></address></div>
-  <div class="col"><p class="fh">Services</p><ul><li><a href="program-project-leadership.html">Program & Project Leadership</a></li><li><a href="project-recovery.html">Project Recovery</a></li><li><a href="federal-nonprofit-delivery.html">Federal & Nonprofit Delivery Support</a></li><li><a href="services.html">All services</a></li></ul></div>
-  <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About Eunice Maize</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="col"><p class="fh">Services</p><ul><li><a href="program-project-leadership.html">Program & Project Leadership</a></li><li><a href="federal-nonprofit-delivery.html">Federal & Nonprofit Delivery Support</a></li><li><a href="services.html">All services</a></li></ul></div>
+  <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About Eunice Maize</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://linkedin.com/in/eunicemaize" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="contact.html">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
  </div>
- <div class="legal"><p>© <span id="year">2026</span> MaizeWay. All rights reserved.</p></div>
+ <div class="legal"><p>© <span id="yr"></span> MaizeWay. All rights reserved.</p></div>
 </div></footer>
-<div class="stickybar" id="stickybar" aria-hidden="true"><a class="btn btn-gold" href="contact.html" data-track="sticky_cta">Schedule a Consultation</a><a class="btn btn-line" href="tel:+13013466557">Call</a></div>
+<div class="stickybar" id="stickybar" aria-hidden="true"><a class="btn btn-gold" href="contact.html" data-track="sticky_cta">Book a Discovery Call</a><a class="btn btn-line" href="tel:+13013466557">Call</a></div>
 
 <script defer>(function(){
 'use strict';
 var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
-var yr=$('#year')||$('#yr'); if(yr) yr.textContent=new Date().getFullYear();
+var yr=$('#yr'); if(yr) yr.textContent=new Date().getFullYear();
 var items=$$('.menu>li'); function closeAll(){items.forEach(function(i){i.classList.remove('open');var a=$('a[aria-haspopup]',i);if(a)a.setAttribute('aria-expanded','false');});}
 items.forEach(function(li){var dd=$('.dd',li);if(!dd)return;var a=$('a',li);
  function open(){closeAll();li.classList.add('open');a.setAttribute('aria-expanded','true');}

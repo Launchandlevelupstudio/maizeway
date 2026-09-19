@@ -1,5 +1,5 @@
 User-agent: *
 Disallow: /
 
-# Sitemap retained for launch readiness (disallowed until go-live)
-Sitemap: https://[maizeway.com]/sitemap.xml
+# Pre-launch: site has placeholder copy. Flip to Allow + sitemap at go-live.
+# Sitemap: https://[maizeway.com]/sitemap.xml
