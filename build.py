@@ -1,7 +1,7 @@
 import os, json, html, datetime
-OUT = "/mnt/user-data/outputs/maizeway-site"
-os.makedirs(OUT, exist_ok=True)
 HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = HERE
+os.makedirs(OUT, exist_ok=True)
 
 HERO_B64 = open(os.path.join(HERE,"hero_b64.txt")).read().strip()
 ABOUT_B64 = open(os.path.join(HERE,"about_b64.txt")).read().strip()
@@ -18,7 +18,7 @@ FORM_EMAIL = "[eunice@maizeway.com]"      # FormSubmit destination once domain e
 CITY_AREA  = "Bowie, MD & the DC metro"
 TAGLINE    = "We streamline the work. We don't add to it."
 YEARS, CERTS = "12+", "PMP"
-LINKEDIN   = "[LinkedIn URL]"
+LINKEDIN   = "[LinkedIn URL]"  # placeholder — omit footer link until a real URL is set
 BOOKING    = "contact.html"
 
 # Three engagement tracks (blueprint Section 13) — replaces the five-tier menu
@@ -61,6 +61,15 @@ METHOD = [
  ("Architect","Design the operating model that fits your constraints.","Operating model, RACI, sequenced plan, governance and reporting design","Weeks 2–4"),
  ("Execute","Lead the work through delivery; adjust as reality intervenes.","Weekly reporting, a managed risk register, decisions driven to close","Weeks 4–12"),
  ("Hand Off","Transfer the structure to your team.","SOPs, templates, documented governance, a transition session","Final 2 weeks"),
+]
+
+
+ENGAGEMENT = [
+ ("Intro call","A 30-minute conversation about the initiative, constraints, and whether MaizeWay is the right fit.","Before kickoff"),
+ ("Week 1","Discover and diagnose: map stakeholders, surface what's already been tried, and name the real failure points.","Days 1–7"),
+ ("Weeks 2–4","Architect the operating model — ownership, sequence, governance, and the reporting cadence leadership will trust.","Design phase"),
+ ("Weeks 4–12","Execute: lead delivery, drive decisions to close, and keep risk and status visible week by week.","Delivery"),
+ ("Handoff","Transfer the structure to your team — SOPs, templates, governance, and a clean transition session.","Final weeks"),
 ]
 
 BELIEFS = [
@@ -120,15 +129,19 @@ def method_block(light=False):
 
 def footer():
     svc = "".join(f'<li><a href="{t["slug"]}.html">{t["nav"]}</a></li>' for t in TRACKS)
+    # Hide LinkedIn until a real URL replaces the placeholder
+    li_link = ""
+    if LINKEDIN and not LINKEDIN.startswith("["):
+        li_link = f'<li><a href="{esc(LINKEDIN)}" rel="noopener" target="_blank">LinkedIn</a></li>'
     return f"""
 <footer class="foot"><div class="wrap">
  <div class="fcols">
   <div class="col about"><p class="fb">{FIRM}</p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   <div class="col"><p class="fh">Services</p><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
-  <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li><li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
+  <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li>{li_link}</ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="{BOOKING}">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
  </div>
- <div class="legal"><p>© <span id="yr"></span> {FIRM}. All rights reserved.</p></div>
+ <div class="legal"><p>© <span id="year">2026</span> {FIRM}. All rights reserved.</p></div>
 </div></footer>
 <div class="stickybar" id="stickybar" aria-hidden="true"><a class="btn btn-gold" href="{BOOKING}" data-track="sticky_cta">Schedule a Consultation</a><a class="btn btn-line" href="tel:{PHONE_TEL}">Call</a></div>
 """
@@ -141,20 +154,61 @@ def schema_base():
       {"@type":"Person","@id":f"{SITE_URL}/#founder","name":FOUNDER,"jobTitle":TITLE,"worksFor":{"@id":f"{SITE_URL}/#org"},"url":f"{SITE_URL}/about.html","hasCredential":{"@type":"EducationalOccupationalCredential","name":"Project Management Professional (PMP)"}},
       {"@type":"WebSite","@id":f"{SITE_URL}/#site","url":SITE_URL+"/","name":FIRM,"publisher":{"@id":f"{SITE_URL}/#org"}}]}
 
-def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=False):
+def analytics_head():
+    """Placeholders only — replace G-XXXXXXXX / YOUR_CLARITY_ID / Search Console code when client provides IDs."""
+    return """
+<!-- ANALYTICS: needs IDs from client before launch
+  GA4 measurement ID: G-XXXXXXXX  (replace stub below)
+  Google Search Console: add verification meta when ready
+  Microsoft Clarity: YOUR_CLARITY_ID
+-->
+<!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_VERIFICATION_TOKEN"> -->
+<script>
+/* GA4 stub — no-ops until a real measurement ID is set */
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+window.gtag=gtag;
+/* TODO: set GA4_ID = 'G-XXXXXXXX' from client, then uncomment:
+(function(){
+  var GA4_ID='G-XXXXXXXX';
+  if(!GA4_ID||GA4_ID.indexOf('X')>=0)return;
+  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;
+  document.head.appendChild(s);
+  gtag('js',new Date());gtag('config',GA4_ID);
+})();
+*/
+</script>
+<script>
+/* Microsoft Clarity stub — replace YOUR_CLARITY_ID when provided
+(function(c,l,a,r,i,t,y){
+  if(!i||i==='YOUR_CLARITY_ID')return;
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+*/
+</script>
+"""
+
+def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=True):
     sch = schema_base()
     if crumb:
         sch["@graph"].append({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":f"{SITE_URL}/{h}"} for i,(n,h) in enumerate([("Home","index.html")]+[(t,h or fn) for t,h in crumb])]})
     if extra_schema: sch["@graph"] += extra_schema
-    robots = '<meta name="robots" content="noindex,nofollow">' if noindex else ""
+    # Pre-launch: noindex sitewide until go-live
+    robots = '<meta name="robots" content="noindex, nofollow">'
+    og_image = f"{SITE_URL}/images/og-default.jpg"
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title>
-<meta name="description" content="{esc(desc)}">{robots}
+<meta name="description" content="{esc(desc)}">
+{robots}
 <link rel="canonical" href="{SITE_URL}/{fn if fn!='index.html' else ''}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE_URL}/{fn}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:image" content="{og_image}">
 <meta name="theme-color" content="#111e32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,6 +217,7 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap"></noscript>
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(sch, ensure_ascii=False)}</script>
+{analytics_head()}
 </head>
 <body>
 {header(active)}
@@ -173,6 +228,17 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
 <script defer>{JS}</script>
 </body>
 </html>"""
+
+
+def engagement_block():
+    items = "".join(
+        f'<li><span class="dot" aria-hidden="true">{i:02d}</span><span class="when">{esc(when)}</span><h3>{esc(title)}</h3><p>{esc(desc)}</p></li>'
+        for i, (title, desc, when) in enumerate(ENGAGEMENT, 1)
+    )
+    return f"""<section class="sec sec-cream" id="engagement" aria-labelledby="eng-h"><div class="wrap">
+ <div class="head"><div class="t"><p class="kicker">Engagement</p><h2 id="eng-h">How an engagement works</h2><p class="sub">Fractional program leadership with a clear arc — from the first conversation through a clean handoff your team can run without me.</p></div></div>
+ <ol class="engage">{items}</ol>
+</div></section>"""
 
 # ------------------------------------------------------------ HOME
 svc_cards = "".join(f'<article><h3><a href="{t["slug"]}.html">{t["nav"]}</a></h3><p class="tag">{t["tag"]}</p><p>{t["short"]}</p><a class="more" href="{t["slug"]}.html" aria-label="Explore {t["nav"]}">Explore {ARROW}</a></article>' for t in TRACKS)
@@ -214,6 +280,8 @@ home = f"""
  <div class="svc">{svc_cards}</div>
 </div></section>
 
+{engagement_block()}
+
 <section class="sec sec-stone" id="about" aria-labelledby="ab-h"><div class="wrap about">
  <div class="img"><img src="data:image/jpeg;base64,{ABOUT_B64}" alt="{FOUNDER}, founder of {FIRM}" width="600" height="899" loading="lazy"></div>
  <div class="t"><p class="kicker">Business Solutions Architect</p><h2 id="ab-h">{FOUNDER}, {CERTS}</h2><p class="sub">I'm a Business Solutions Architect with over 12 years of experience across federal government, nonprofit, and private consulting sectors — diagnosing what's broken, architecting what's missing, implementing solutions that stick.</p>
@@ -245,9 +313,16 @@ def service_page(t, i):
     others = [o for o in TRACKS if o is not t]
     dl = "".join(f"<li>{CHECK}{d}</li>" for d in t["deliverables"])
     sch = [{"@type":"Service","name":t["h1"],"serviceType":t["h1"],"provider":{"@id":f"{SITE_URL}/#org"},"areaServed":CITY_AREA,"description":t["short"],"url":f"{SITE_URL}/{t['slug']}.html"}]
+    cta_btns = f'<a class="btn btn-gold" href="{BOOKING}" data-track="svc_hero_cta">{t["cta"]}</a>'
+    # Federal & Nonprofit: ungated capability statement (PDF path reserved; file not invented)
+    if t["slug"] == "federal-nonprofit-delivery":
+        cta_btns += (
+            '<!-- Capability statement PDF: place file at assets/maizeway-capability-statement.pdf when ready -->'
+            f'<a class="btn btn-line" href="assets/maizeway-capability-statement.pdf" data-track="capability_statement">Download capability statement</a>'
+        )
     body = f"""
 {crumbs([("Services","services.html"),(t["nav"],None)])}
-<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">Track 0{i+1}</p><h1>{t["h1"]}</h1><p class="lede">{t["tag"]}</p><div class="acts"><a class="btn btn-gold" href="{BOOKING}" data-track="svc_hero_cta">{t["cta"]}</a></div></div></section>
+<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">Track 0{i+1}</p><h1>{t["h1"]}</h1><p class="lede">{t["tag"]}</p><div class="acts">{cta_btns}</div></div></section>
 <section class="sec"><div class="wrap grid g2 po">
  <div><p class="kicker">Who needs this</p><p class="sub">{t["who"]}</p></div>
  <div><p class="kicker">Problems it solves</p><p class="sub">{t["problems"]}</p></div>
@@ -354,7 +429,7 @@ notfound = f"""
 pages = [
  ("index.html", f"{FIRM} | Fractional Program & Project Leadership", f"Fractional project and program management consulting for federal, nonprofit, and mission-driven organizations. {YEARS} years, PMP-certified, {CITY_AREA}.", "home", home, None, None),
  ("services.html", f"Services | {FIRM}", "Program and project leadership, project recovery, and federal and nonprofit delivery support — scoped to the problem, not a tiered package.", "services", services, None, [("Services",None)]),
- ("about.html", f"About {FOUNDER} | {FIRM}", f"{FOUNDER}, {TITLE}: {YEARS} years leading programs across federal, nonprofit, and consulting environments.", "about", about, None, [("About",None)]),
+ ("about.html", f"About {FOUNDER} | {FIRM}", f"{FOUNDER}, {TITLE}: {YEARS} years leading programs across federal, nonprofit, and consulting environments.", "about", about, [{"@type":"Person","@id":f"{SITE_URL}/#founder","name":FOUNDER,"jobTitle":TITLE,"worksFor":{"@id":f"{SITE_URL}/#org"},"url":f"{SITE_URL}/about.html","description":f"{FOUNDER} is the founder of {FIRM}, providing fractional program and project leadership for federal, nonprofit, and mission-driven organizations.","hasCredential":{"@type":"EducationalOccupationalCredential","name":"Project Management Professional (PMP)"},"address":{"@type":"PostalAddress","addressLocality":"Bowie","addressRegion":"MD","addressCountry":"US"}}], [("About",None)]),
  ("contact.html", f"Schedule a Consultation | {FIRM}", f"Tell {FOUNDER} what's stuck. A 30-minute consultation, a response within one business day, no pitch deck.", "contact", contact, None, [("Contact",None)]),
 ]
 for i,t in enumerate(TRACKS):
@@ -369,6 +444,6 @@ open(os.path.join(OUT,"404.html"),"w").write(page("404.html",f"Page not found | 
 today = datetime.date.today().isoformat()
 urls = [p[0] for p in pages]
 open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f'  <url><loc>{SITE_URL}/{u if u!="index.html" else ""}</loc><lastmod>{today}</lastmod><priority>{"1.0" if u=="index.html" else "0.8"}</priority></url>\n' for u in urls)+'</urlset>\n')
-open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thank-you.html\nSitemap: {SITE_URL}/sitemap.xml\n")
+open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nDisallow: /\n\n# Sitemap retained for launch readiness (disallowed until go-live)\nSitemap: {SITE_URL}/sitemap.xml\n")
 open(os.path.join(OUT,"favicon.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#111e32" stroke="#c5973a" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="20" fill="#c5973a">MW</text></svg>')
 print("built", len(urls)+3, "pages")

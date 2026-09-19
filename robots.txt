@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
-Disallow: /thank-you.html
+Disallow: /
+
+# Sitemap retained for launch readiness (disallowed until go-live)
 Sitemap: https://[maizeway.com]/sitemap.xml
