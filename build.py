@@ -131,7 +131,7 @@ def pkg_card(p):
  <h3>{p["name"]}</h3>
  <p class="pkg-desc">{p["desc"]}</p>
  <ul class="ticks">{bl}</ul>
- <div class="pkg-foot"><span class="pkg-bestfor">Best for: {p["bestfor"]}</span><a class="more" href="contact.html">{p["cta"]} {ARROW}</a></div>
+ <div class="pkg-foot"><p class="pkg-price">Custom quote after a call</p><span class="pkg-bestfor">Best for: {p["bestfor"]}</span><a class="more" href="contact.html">{p["cta"]} {ARROW}</a></div>
 </article>'''
 
 def pkg_section(t):
@@ -270,7 +270,7 @@ services = f"""
  {"".join(f'''<article class="svcrow" id="{t["slug"]}"><div><h2><a href="{t["slug"]}.html">{t["h1"]}</a></h2><p class="tag">{t["tag"]}</p><p class="sub">{t["short"]}</p><a class="btn btn-dark" href="{t["slug"]}.html">Explore {t["nav"]}</a></div><ul class="ticks"><li>{CHECK}<span><b>Who it's for</b> — {t["who"]}</span></li><li>{CHECK}<span><b>Structure</b> — {t["structure"]}</span></li></ul></article>''' for t in TRACKS)}
 </div></section>
 <section class="sec sec-stone"><div class="wrap">
- <div class="head"><div class="t"><h2>Ways to start.</h2><p class="sub">Every track below opens with a scoped entry point. Fees are quoted after a short call, once the scope is real — nothing here is a rate card. <span class="fine">[Price for each package needed from Eunice.]</span></p></div></div>
+ <div class="head"><div class="t"><h2>Ways to start.</h2><p class="sub">Every track below opens with a scoped entry point. Pricing is a <strong>custom quote after a call</strong> — nothing here is a rate card.</p></div></div>
  {"".join(pkg_section(t) for t in TRACKS)}
 </div></section>
 <section class="sec"><div class="wrap" style="text-align:center">
