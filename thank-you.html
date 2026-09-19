@@ -154,6 +154,19 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 .stickybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--navy-dark);border-top:1px solid rgba(197,151,58,.2);gap:10px;transform:translateY(110%);transition:transform .25s}
 .stickybar.on{transform:none}.stickybar .btn{flex:1;min-height:46px;padding:0 16px}.stickybar .btn-line{flex:0 0 auto}
 
+
+/* packages */
+.pkg-group{margin-bottom:48px}.pkg-group:last-child{margin-bottom:0}
+.pkg-group-h{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:18px}
+.pkg-group-h a:hover{color:var(--gold)}
+.pkgs{align-items:stretch}
+.pkg{background:#fff;border:1px solid rgba(197,151,58,.25);border-radius:2px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.pkg-kicker{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.pkg h3{font-size:22px}
+.pkg-desc{font-size:14px;color:var(--text-mid);line-height:1.65}
+.pkg .ticks{gap:10px;margin-top:4px}.pkg .ticks li{font-size:13px}
+.pkg-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--cream);display:flex;flex-direction:column;gap:10px}
+.pkg-bestfor{font-size:12px;font-style:italic;color:var(--text-light)}
 /* engagement timeline (homepage) */
 .engage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:eng;position:relative;margin-top:8px}
 .engage::before{content:"";position:absolute;left:6%;right:6%;top:28px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
@@ -170,12 +183,13 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
  .proof,.about,.svcrow,.contact,.po{grid-template-columns:1fr}.about .img{max-width:340px;order:-1;margin-inline:auto}
  .svc{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fcols{grid-template-columns:1fr 1fr}
  .nav-phone{display:none}
+ .pkgs.g3{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
  .wrap{padding:0 22px}.menu{display:none}.burger{display:flex}
  .sec{padding:64px 0}.hero .wrap{padding-top:52px;padding-bottom:52px}.hero .lede{font-size:17px}
  .head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
- .g2,.g3,.nums,.steps,.cinfo,.engage{grid-template-columns:1fr}
+ .g2,.g3,.nums,.steps,.cinfo,.engage,.pkgs.g3,.pkgs.g2{grid-template-columns:1fr}
  .engage::before{display:none}
  .engage li{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:8px 16px;align-items:start;padding:12px 0}
  .engage .dot{margin:0;grid-row:span 3}

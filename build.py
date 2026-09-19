@@ -31,7 +31,6 @@ TRACKS = [
       does="I diagnose the current state, design the operating model, build the plan and the governance around it, then lead the execution through delivery.",
       deliverables=["Operating model and RACI","Sequenced delivery plan","Risk register with owners","Reporting cadence and template","SOPs for the processes created","Handoff package"],
       structure="30–90 days project-based, or a monthly retainer for ongoing portfolio oversight.",
-      entry="The Operations Diagnostic — a scoped two-week assessment producing a prioritized findings report and a recommended path.",
       cta="Discuss your initiative"),
  dict(slug="project-recovery", nav="Project Recovery", h1="When a Project Is Already Off Track",
       tag="An honest assessment of what's recoverable, then hands-on leadership through the recovery.",
@@ -41,7 +40,6 @@ TRACKS = [
       does="A rapid, independent assessment in the first week gives you an honest picture of what's recoverable. From there I re-baseline the plan and lead the recovery — I don't hand over a report and leave.",
       deliverables=["Recovery assessment (week 1)","Re-baselined plan and scope","Stakeholder communication plan","Revised governance","Weekly executive reporting through stabilization"],
       structure="A one-week assessment, which can be purchased standalone, followed by a 60–90 day recovery.",
-      entry="The assessment itself — a clear, judgment-free read on where things stand and what it will take.",
       cta="Get an honest assessment"),
  dict(slug="federal-nonprofit-delivery", nav="Federal & Nonprofit Delivery Support", h1="Program Support for Compliance-Driven, Resource-Constrained Teams",
       tag="Built for environments where the reporting requirements come from outside and the team executing is small.",
@@ -51,9 +49,42 @@ TRACKS = [
       does="Portfolio and program management, acquisition planning support, federal reporting and data call management, compliance-aligned SOP development, and stakeholder engagement strategy.",
       deliverables=["Compliance-aligned SOPs","Reporting calendar and templates","Data call response process","Program documentation package","Stakeholder engagement plan"],
       structure="Custom scope — project or retainer.",
-      entry="A capability discussion to map your reporting requirements against what's currently in place.",
       cta="Request a capability discussion"),
 ]
+
+# Entry / core / ongoing packages — services "Ways to start" + each track page.
+# No prices on site: fees quoted after a short call once scope is real.
+PACKAGES = [
+ dict(track="program-project-leadership", tier="Entry · Assessment", name="The Efficiency Audit",
+      desc="A focused deep-dive into your operations, workflows, and team processes. You walk away with a prioritized action plan that shows exactly where the initiative is losing time, budget, and momentum.",
+      includes=["Operations & workflow assessment","Bottleneck identification report","Prioritized recommendations roadmap","60-min debrief session"],
+      best_for="Organizations sizing up a bigger initiative", cta="Start here"),
+ dict(track="program-project-leadership", tier="Entry · One day", name="The VIP Strategy Day",
+      desc="A full-day intensive working session. We map the operational landscape together, identify the highest-leverage opportunities, and build a concrete 90-day execution plan in a single focused sitting.",
+      includes=["Full-day working session (6 hrs)","Operational landscape mapping","90-day execution roadmap","2-week post-day email support"],
+      best_for="Decisive leaders who want a plan in a day", cta="Reserve a day"),
+ dict(track="program-project-leadership", tier="Core · 30–90 days", name="The Solutions Sprint",
+      desc="Hands-on program and project leadership to implement operational fixes and build the structure that gets a specific initiative to the finish line.",
+      includes=["Project management & execution","Workflow design & implementation","Team alignment & SOPs","Weekly check-ins & reporting"],
+      best_for="Initiatives mid-transition or launching new", cta="Let's talk scope"),
+ dict(track="program-project-leadership", tier="Ongoing · Monthly", name="The Strategic Partner Retainer",
+      desc="Ongoing monthly leadership for organizations that need a senior program partner embedded on a recurring basis — priority oversight across whatever is in flight, without a full-time hire.",
+      includes=["Monthly strategy sessions","On-call advisory support","Ongoing process optimization","Priority project oversight","Monthly performance reporting"],
+      best_for="Leaders who want a senior partner embedded year-round", cta="Apply for a retainer"),
+ dict(track="project-recovery", tier="Entry · One week", name="The Recovery Assessment",
+      desc="A rapid, independent assessment of a project already showing red status. You get an honest read on what's recoverable and what it will take — before committing to a full recovery engagement.",
+      includes=["Rapid independent assessment","Root-cause findings","Recoverability verdict","Re-baseline recommendation"],
+      best_for="A project already showing red status", cta="Get an assessment"),
+ dict(track="project-recovery", tier="Core · 60–90 days", name="The Recovery Engagement",
+      desc="Hands-on leadership through stabilization once the assessment is done — re-baselining the plan and leading the recovery, not just handing over a report.",
+      includes=["Re-baselined plan & scope","Stakeholder communication plan","Revised governance","Weekly executive reporting through stabilization"],
+      best_for="Leadership that needs the recovery led, not just diagnosed", cta="Discuss recovery"),
+ dict(track="federal-nonprofit-delivery", tier="Specialized · Custom", name="Federal & Nonprofit Solutions",
+      desc="Tailored program and project management support for federal agencies, contractors, and mission-driven nonprofits — built around reporting obligations that come from outside and delivery teams that are often small.",
+      includes=["Portfolio & program management","Acquisition planning support","Federal reporting & data calls","Compliance-aligned SOPs","Stakeholder engagement strategy"],
+      best_for="Federal agencies, contractors & nonprofits", cta="Request a proposal"),
+]
+
 
 METHOD = [
  ("Discover","Objectives, constraints, stakeholders, what's already been tried.","Engagement brief and success criteria","Week 1"),
@@ -126,6 +157,71 @@ def method_block(light=False):
     cls = "steps light" if light else "steps"
     items = "".join(f'<li><p class="n">0{i+1}</p><h3>{n}</h3><p class="does">{d}</p><p class="get"><b>You get:</b> {g}</p><p class="dur">{dur}</p></li>' for i,(n,d,g,dur) in enumerate(METHOD))
     return f"""<div class="{cls}">{items}</div><p class="method-note">Most engagements move through all five stages in 30 to 90 days. The scope of an engagement is the initiative, not the calendar.</p>"""
+
+def packages_for(slug):
+    return [p for p in PACKAGES if p["track"] == slug]
+
+def render_package(p):
+    ticks = "".join(f"<li>{CHECK}{esc(i)}</li>" for i in p["includes"])
+    if " · " in p["tier"]:
+        a, b = p["tier"].split(" · ", 1)
+        kicker = f"{esc(a)} &middot; {esc(b).upper()}"
+    else:
+        kicker = esc(p["tier"])
+    return (
+        f'<article class="pkg">'
+        f'<p class="pkg-kicker">{kicker}</p>'
+        f'<h3>{esc(p["name"])}</h3>'
+        f'<p class="pkg-desc">{esc(p["desc"])}</p>'
+        f'<ul class="ticks">{ticks}</ul>'
+        f'<div class="pkg-foot"><span class="pkg-bestfor">Best for: {esc(p["best_for"])}</span>'
+        f'<a class="more" href="{BOOKING}">{esc(p["cta"])} {ARROW}</a></div>'
+        f'</article>'
+    )
+
+def packages_grid(pkgs, cols=None):
+    if not pkgs:
+        return ""
+    n = cols if cols is not None else (3 if len(pkgs) == 1 else 2)
+    g = "g3" if n >= 3 else "g2"
+    return f'<div class="grid {g} pkgs">{"".join(render_package(p) for p in pkgs)}</div>'
+
+def ways_to_start_section():
+    groups = []
+    for t in TRACKS:
+        pkgs = packages_for(t["slug"])
+        if not pkgs:
+            continue
+        cols = 3 if t["slug"] == "federal-nonprofit-delivery" else 2
+        groups.append(
+            f'<div class="pkg-group"><h3 class="pkg-group-h">'
+            f'<a href="{t["slug"]}.html">{esc(t["nav"])}</a></h3>'
+            f'{packages_grid(pkgs, cols)}</div>'
+        )
+    note = (
+        "Every track below opens with a scoped entry point. "
+        "Fees are quoted after a short call, once the scope is real — nothing here is a rate card. "
+        "Package fees are quoted after discovery."
+    )
+    return (
+        f'<section class="sec sec-stone"><div class="wrap">'
+        f'<div class="head"><div class="t"><h2>Ways to start.</h2>'
+        f'<p class="sub">{note}</p></div></div>'
+        f'{"".join(groups)}</div></section>'
+    )
+
+def track_packages_section(t):
+    pkgs = packages_for(t["slug"])
+    if not pkgs:
+        return ""
+    cols = 3 if t["slug"] == "federal-nonprofit-delivery" else 2
+    return (
+        f'<section class="sec"><div class="wrap">'
+        f'<div class="head"><div class="t"><h2>How to start.</h2>'
+        f'<p class="sub">Fees are quoted after a short call, once the scope is real.</p></div></div>'
+        f'{packages_grid(pkgs, cols)}</div></section>'
+    )
+
 
 def footer():
     svc = "".join(f'<li><a href="{t["slug"]}.html">{t["nav"]}</a></li>' for t in TRACKS)
@@ -292,22 +388,34 @@ home = f"""
 """
 
 # ------------------------------------------------------------ SERVICES INDEX
+_svc_rows = "".join(
+    '<article class="svcrow" id="{slug}"><div>'
+    '<h2><a href="{slug}.html">{h1}</a></h2>'
+    '<p class="tag">{tag}</p><p class="sub">{short}</p>'
+    '<a class="btn btn-dark" href="{slug}.html">Explore {nav}</a></div>'
+    '<ul class="ticks">'
+    '<li>{check}<span><b>Who it\'s for</b> — {who}</span></li>'
+    '<li>{check}<span><b>Structure</b> — {structure}</span></li>'
+    '</ul></article>'.format(
+        slug=t["slug"], h1=t["h1"], tag=t["tag"], short=t["short"], nav=t["nav"],
+        who=t["who"], structure=t["structure"], check=CHECK,
+    )
+    for t in TRACKS
+)
 services = f"""
 {crumbs([("Services",None)])}
 <section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><h1>How organizations bring in program leadership.</h1><p class="lede">Every engagement is scoped to the problem in front of you — not a tier on a pricing menu.</p></div></section>
 <section class="sec"><div class="wrap">
- {"".join(f'''<article class="svcrow" id="{t["slug"]}"><div><h2><a href="{t["slug"]}.html">{t["h1"]}</a></h2><p class="tag">{t["tag"]}</p><p class="sub">{t["short"]}</p><a class="btn btn-dark" href="{t["slug"]}.html">Explore {t["nav"]}</a></div><ul class="ticks"><li>{CHECK}<span><b>Who it's for</b> — {t["who"]}</span></li><li>{CHECK}<span><b>Structure</b> — {t["structure"]}</span></li></ul></article>''' for t in TRACKS)}
+ {_svc_rows}
 </div></section>
-<section class="sec sec-stone"><div class="wrap price">
- <h2>What engagements cost</h2>
- <p class="sub">Diagnostic engagements typically begin at [$X]. Project engagements are scoped to the initiative and generally range from [$X] to [$X]. Retainers start at [$X] monthly. <span class="fine">[Pricing floors needed from Eunice before this section can publish — see notes.]</span></p>
-</div></section>
+{ways_to_start_section()}
 <section class="sec"><div class="wrap" style="text-align:center">
  <p class="kicker">Not sure which fits?</p><h2>Start with a conversation, not a decision.</h2>
  <p class="sub" style="max-width:560px;margin:16px auto 0">Most engagements start with a 30-minute call and, if it makes sense, a short diagnostic. We'll figure out the shape together.</p>
 </div></section>
 {cta_band()}
 """
+
 
 def service_page(t, i):
     others = [o for o in TRACKS if o is not t]
@@ -320,6 +428,11 @@ def service_page(t, i):
             '<!-- Capability statement PDF: place file at assets/maizeway-capability-statement.pdf when ready -->'
             f'<a class="btn btn-line" href="assets/maizeway-capability-statement.pdf" data-track="capability_statement">Download capability statement</a>'
         )
+    also = "".join(
+        f'<a class="card link-card" href="{o["slug"]}.html"><h3>{o["h1"]}</h3><p>{o["short"]}</p>'
+        f'<span class="more">Details {ARROW}</span></a>'
+        for o in others
+    )
     body = f"""
 {crumbs([("Services","services.html"),(t["nav"],None)])}
 <section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">Track 0{i+1}</p><h1>{t["h1"]}</h1><p class="lede">{t["tag"]}</p><div class="acts">{cta_btns}</div></div></section>
@@ -330,12 +443,14 @@ def service_page(t, i):
 <section class="sec sec-stone"><div class="wrap">
  <div class="head"><div class="t"><h2>What I do.</h2><p class="sub">{t["does"]}</p></div></div>
  <div class="grid g2"><ul class="ticks card">{dl}</ul>
-  <div class="card"><p class="kicker">Engagement structure</p><p class="sub">{t["structure"]}</p><p class="kicker" style="margin-top:24px">Entry point</p><p class="sub">{t["entry"]}</p></div></div>
+  <div class="card"><p class="kicker">Engagement structure</p><p class="sub">{t["structure"]}</p></div></div>
 </div></section>
-<section class="sec"><div class="wrap"><p class="kicker">Also</p><div class="grid g2">{"".join(f'<a class="card link-card" href="{o["slug"]}.html"><h3>{o["h1"]}</h3><p>{o["short"]}</p><span class="more">Details {ARROW}</span></a>' for o in others)}</div></div></section>
+{track_packages_section(t)}
+<section class="sec"><div class="wrap"><p class="kicker">Also</p><div class="grid g2">{also}</div></div></section>
 {cta_band(t["cta"]+".", t["short"])}
 """
     return body, sch
+
 
 # ------------------------------------------------------------ ABOUT
 beliefs_html = "".join(f'<blockquote>{b}</blockquote>' for b in BELIEFS)

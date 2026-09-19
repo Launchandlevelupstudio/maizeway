@@ -2,3 +2,4 @@
 # build inputs (images are inlined into HTML)
 hero_b64.txt
 about_b64.txt
+__pycache__/

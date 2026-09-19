@@ -154,6 +154,19 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 .stickybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--navy-dark);border-top:1px solid rgba(197,151,58,.2);gap:10px;transform:translateY(110%);transition:transform .25s}
 .stickybar.on{transform:none}.stickybar .btn{flex:1;min-height:46px;padding:0 16px}.stickybar .btn-line{flex:0 0 auto}
 
+
+/* packages */
+.pkg-group{margin-bottom:48px}.pkg-group:last-child{margin-bottom:0}
+.pkg-group-h{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:18px}
+.pkg-group-h a:hover{color:var(--gold)}
+.pkgs{align-items:stretch}
+.pkg{background:#fff;border:1px solid rgba(197,151,58,.25);border-radius:2px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.pkg-kicker{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.pkg h3{font-size:22px}
+.pkg-desc{font-size:14px;color:var(--text-mid);line-height:1.65}
+.pkg .ticks{gap:10px;margin-top:4px}.pkg .ticks li{font-size:13px}
+.pkg-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--cream);display:flex;flex-direction:column;gap:10px}
+.pkg-bestfor{font-size:12px;font-style:italic;color:var(--text-light)}
 /* engagement timeline (homepage) */
 .engage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:eng;position:relative;margin-top:8px}
 .engage::before{content:"";position:absolute;left:6%;right:6%;top:28px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
@@ -170,12 +183,13 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
  .proof,.about,.svcrow,.contact,.po{grid-template-columns:1fr}.about .img{max-width:340px;order:-1;margin-inline:auto}
  .svc{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fcols{grid-template-columns:1fr 1fr}
  .nav-phone{display:none}
+ .pkgs.g3{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
  .wrap{padding:0 22px}.menu{display:none}.burger{display:flex}
  .sec{padding:64px 0}.hero .wrap{padding-top:52px;padding-bottom:52px}.hero .lede{font-size:17px}
  .head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
- .g2,.g3,.nums,.steps,.cinfo,.engage{grid-template-columns:1fr}
+ .g2,.g3,.nums,.steps,.cinfo,.engage,.pkgs.g3,.pkgs.g2{grid-template-columns:1fr}
  .engage::before{display:none}
  .engage li{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:8px 16px;align-items:start;padding:12px 0}
  .engage .dot{margin:0;grid-row:span 3}
@@ -257,8 +271,9 @@ window.gtag=gtag;
 <section class="sec sec-stone"><div class="wrap">
  <div class="head"><div class="t"><h2>What I do.</h2><p class="sub">Portfolio and program management, acquisition planning support, federal reporting and data call management, compliance-aligned SOP development, and stakeholder engagement strategy.</p></div></div>
  <div class="grid g2"><ul class="ticks card"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Compliance-aligned SOPs</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Reporting calendar and templates</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Data call response process</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Program documentation package</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stakeholder engagement plan</li></ul>
-  <div class="card"><p class="kicker">Engagement structure</p><p class="sub">Custom scope — project or retainer.</p><p class="kicker" style="margin-top:24px">Entry point</p><p class="sub">A capability discussion to map your reporting requirements against what's currently in place.</p></div></div>
+  <div class="card"><p class="kicker">Engagement structure</p><p class="sub">Custom scope — project or retainer.</p></div></div>
 </div></section>
+<section class="sec"><div class="wrap"><div class="head"><div class="t"><h2>How to start.</h2><p class="sub">Fees are quoted after a short call, once the scope is real.</p></div></div><div class="grid g3 pkgs"><article class="pkg"><p class="pkg-kicker">Specialized &middot; CUSTOM</p><h3>Federal &amp; Nonprofit Solutions</h3><p class="pkg-desc">Tailored program and project management support for federal agencies, contractors, and mission-driven nonprofits — built around reporting obligations that come from outside and delivery teams that are often small.</p><ul class="ticks"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Portfolio &amp; program management</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Acquisition planning support</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Federal reporting &amp; data calls</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Compliance-aligned SOPs</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stakeholder engagement strategy</li></ul><div class="pkg-foot"><span class="pkg-bestfor">Best for: Federal agencies, contractors &amp; nonprofits</span><a class="more" href="contact.html">Request a proposal <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article></div></div></section>
 <section class="sec"><div class="wrap"><p class="kicker">Also</p><div class="grid g2"><a class="card link-card" href="program-project-leadership.html"><h3>Program & Project Leadership</h3><p>I own the structure, drive the execution, and leave the operating documentation behind.</p><span class="more">Details <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="card link-card" href="project-recovery.html"><h3>When a Project Is Already Off Track</h3><p>Rapid assessment, a re-baselined plan, and leadership through stabilization — not just a report.</p><span class="more">Details <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
 <section class="cta" aria-labelledby="cta-h"><div class="wrap"><div class="t"><h2 id="cta-h">Request a capability discussion.</h2><p>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</p><p class="fine">Prefer email? <a href="mailto:[eunice@maizeway.com]">[eunice@maizeway.com]</a> · (301) 346-6557</p></div><a class="btn btn-navy" href="contact.html" data-track="band_cta">Schedule a Consultation</a></div></section>
 
