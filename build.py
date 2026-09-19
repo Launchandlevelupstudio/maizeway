@@ -181,7 +181,7 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
     if crumb:
         sch["@graph"].append({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":f"{SITE_URL}/{h}"} for i,(n,h) in enumerate([("Home","index.html")]+[(t,h or fn) for t,h in crumb])]})
     if extra_schema: sch["@graph"] += extra_schema
-    robots = '<meta name="robots" content="noindex,nofollow">' if noindex else ""
+    robots = '<meta name="robots" content="noindex, nofollow">'  # pre-launch; remove at go-live
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -189,8 +189,9 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">{robots}
 <link rel="canonical" href="{SITE_URL}/{fn if fn!='index.html' else ''}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE_URL}/{fn}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE_URL}/{fn}"><meta property="og:image" content="{SITE_URL}/og-image.jpg"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#111e32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap">
