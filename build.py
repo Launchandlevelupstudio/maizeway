@@ -13,8 +13,8 @@ FOUNDER    = "Eunice Maize"
 TITLE      = "PMP, Business Solutions Architect"
 PHONE      = "(301) 346-6557"
 PHONE_TEL  = "+13013466557"
-EMAIL      = "[eunice@maizeway.com]"      # domain email — currently eunicemaize@gmail.com, see notes
-FORM_EMAIL = "[eunice@maizeway.com]"      # FormSubmit destination once domain email exists
+EMAIL      = "eunice@maizewaystrategy.com"
+FORM_EMAIL = "eunice@maizewaystrategy.com"      # FormSubmit destination
 CITY_AREA  = "Bowie, MD & the DC metro"
 TAGLINE    = "We streamline the work. We don't add to it."
 YEARS, CERTS = "12+", "PMP"
@@ -102,7 +102,7 @@ def header(active):
     return f"""
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav"><div class="wrap">
- <a class="brand" href="index.html" aria-label="{FIRM} home"><span class="mark" aria-hidden="true">MW</span><span class="brand-text"><span class="name">{FIRM}</span><span class="tagline">Project Management Consulting</span></span></a>
+ <a class="brand" href="index.html" aria-label="{FIRM} home"><span class="brand-lockup"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="228" height="44"><span class="tagline">Project Management Consulting</span></span></a>
  <nav aria-label="Primary"><ul class="menu">
   <li{cls('services')}><a href="services.html" aria-haspopup="true" aria-expanded="false">Services {CARET}</a><div class="dd" role="menu">{dd}<a href="services.html" role="menuitem" class="all">All services {ARROW}</a></div></li>
   <li{cls('about')}><a href="about.html">About</a></li>
@@ -112,7 +112,7 @@ def header(active):
  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
- <div class="top"><a class="brand" href="index.html"><span class="mark sm" aria-hidden="true">MW</span><span class="brand-text"><span class="name sm">{FIRM}</span><span class="tagline sm">Project Management Consulting</span></span></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+ <div class="top"><a class="brand" href="index.html" aria-label="{FIRM} home"><span class="brand-lockup"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="228" height="44"><span class="tagline sm">Project Management Consulting</span></span></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
  <nav aria-label="Mobile">
   <button class="row" data-acc aria-expanded="false" aria-controls="msub"><span>Services</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
   <div class="sub" id="msub">{mob}<a href="services.html">All services</a></div>
@@ -158,7 +158,7 @@ def footer():
     return f"""
 <footer class="foot"><div class="wrap">
  <div class="fcols">
-  <div class="col about"><p class="fb">{FIRM}</p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
+  <div class="col about"><p class="fb"><img class="brand-logo footer-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="228" height="44"></p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   <div class="col"><p class="fh">Services</p><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
   <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li><li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="{BOOKING}">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
@@ -192,7 +192,7 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
 <meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE_URL}/{fn}"><meta property="og:image" content="{SITE_URL}/og-image.jpg"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#111e32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/logo-mw-mark.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
