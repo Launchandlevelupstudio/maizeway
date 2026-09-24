@@ -162,7 +162,7 @@ def footer():
     return f"""
 <footer class="foot"><div class="wrap">
  <div class="fcols">
-  <div class="col about"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
+  <div class="col"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   <div class="col"><p class="fh">Services</p><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
   <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li><li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="{BOOKING}">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
