@@ -45,15 +45,16 @@ p{margin:0}a{color:inherit;text-decoration:none}img{max-width:100%;display:block
 .brand-mark .brand-logo{position:absolute;top:0;left:0;width:100%;height:auto;max-width:none;object-fit:fill;object-position:left top}
 .brand-lockup .tagline{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .foot .brand-mark{width:min(220px,70vw)}
-.foot .brand-lockup{margin:0 0 12px}
+.foot .brand-lockup{margin:0 0 8px}
 .menu{display:flex;align-items:center;gap:30px;flex:1;justify-content:flex-end}.menu>li{position:relative}
 .menu>li>a{font-size:14px;font-weight:500;color:#fff;display:inline-flex;align-items:center;gap:5px;height:76px}
 .menu>li>a:hover,.menu>li.open>a{color:var(--gold)}.menu>li.active>a{box-shadow:inset 0 -2px 0 var(--gold)}
 .caret{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:3;transition:transform .2s}.menu>li.open .caret{transform:rotate(180deg)}
-.dd{position:absolute;top:76px;left:-24px;min-width:340px;background:#fff;border:1px solid rgba(197,151,58,.2);box-shadow:0 20px 40px rgba(17,30,50,.18);padding:10px 0;display:none;flex-direction:column}
-.dd a{padding:13px 26px;color:var(--navy);display:flex;flex-direction:column;gap:2px;font-weight:600;font-size:14px}
-.dd a small{font-size:12px;font-weight:400;color:var(--text-light);line-height:1.5}.dd a:hover{background:var(--cream)}
-.dd a.all{flex-direction:row;align-items:center;gap:8px;border-top:1px solid var(--cream);margin-top:6px;color:var(--gold);font-size:12px}
+.dd{position:absolute;top:76px;left:-24px;min-width:340px;background:#fff;border:1px solid rgba(197,151,58,.2);box-shadow:0 20px 40px rgba(17,30,50,.18);padding:6px 0;display:none;flex-direction:column}
+.dd a{padding:11px 22px;color:var(--navy);display:flex;flex-direction:column;gap:2px;font-weight:600;font-size:14px}
+.dd a small{font-size:12px;font-weight:400;color:var(--text-light);line-height:1.45}.dd a:hover{background:var(--cream)}
+.dd a.all{flex-direction:row;align-items:center;gap:6px;border-top:1px solid var(--cream);margin-top:4px;color:var(--gold);font-size:12px}
+.dd a.all svg{width:15px;height:15px;flex:none}
 li.open>.dd{display:flex}
 .nav-phone{color:rgba(255,255,255,.7);font-size:14px;font-weight:500}.nav-phone:hover{color:#fff}
 .burger{display:none;width:44px;height:44px;background:transparent;border:0;color:#fff;cursor:pointer;align-items:center;justify-content:center}
@@ -146,13 +147,13 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 .ok{font-size:14px;padding:12px 14px;background:#e8f1e4;color:#2c5a2e;border-radius:4px}
 .prose{max-width:760px}.prose h1{margin-bottom:16px}.prose h2{font-size:26px;margin:32px 0 10px}.prose p{color:var(--text-mid);margin-bottom:12px}
 /* footer */
-.foot{background:var(--navy-dark);color:#fff}.foot .wrap{padding-top:60px;padding-bottom:36px}
-.fcols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}.fcols ul{display:flex;flex-direction:column}
-.fcols li a{font-size:14px;color:rgba(255,255,255,.7);padding:10px 0;display:inline-block}.fcols li a:hover{color:#fff}
-.fh{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.foot{background:var(--navy-dark);color:#fff}.foot .wrap{padding-top:44px;padding-bottom:24px}
+.fcols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}.fcols ul{display:flex;flex-direction:column}
+.fcols li a{font-size:14px;color:rgba(255,255,255,.7);padding:7px 0;display:inline-block}.fcols li a:hover{color:#fff}
+.fh{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .fb{font-family:var(--serif);font-size:24px;font-weight:600;color:#fff;margin-bottom:0}
-.fa{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);max-width:320px;font-style:normal;margin-bottom:10px}.fa a{padding:9px 0;display:inline-block}.fa a:hover{color:#fff}
-.legal{font-size:13px;color:rgba(255,255,255,.45);padding-top:22px;margin-top:36px;border-top:1px solid rgba(255,255,255,.1)}
+.fa{font-size:14px;line-height:1.5;color:rgba(255,255,255,.6);font-style:normal;margin:0}.fa a{padding:4px 0;display:inline-block}.fa a:hover{color:#fff}
+.legal{font-size:13px;color:rgba(255,255,255,.45);padding-top:16px;margin-top:24px;border-top:1px solid rgba(255,255,255,.1)}
 /* sticky bar */
 .stickybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--navy-dark);border-top:1px solid rgba(197,151,58,.2);gap:10px;transform:translateY(110%);transition:transform .25s}
 .stickybar.on{transform:none}.stickybar .btn{flex:1;min-height:46px;padding:0 16px}.stickybar .btn-line{flex:0 0 auto}
@@ -212,7 +213,7 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 <header class="nav" id="nav"><div class="wrap">
  <a class="brand" href="index.html" aria-label="MaizeWay, project management consulting"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></a>
  <nav aria-label="Primary"><ul class="menu">
-  <li><a href="services.html" aria-haspopup="true" aria-expanded="false">Services <svg class="caret" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd" role="menu"><a href="program-project-leadership.html" role="menuitem">Program & Project Leadership<small>I own the structure, drive the execution, and leave the operating documentation behind.</small></a><a href="federal-nonprofit-delivery.html" role="menuitem">Federal & Nonprofit Delivery Support<small>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</small></a><a href="services.html" role="menuitem" class="all">All services <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></li>
+  <li><a href="services.html" aria-haspopup="true" aria-expanded="false">Services <svg class="caret" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd" role="menu"><a href="program-project-leadership.html" role="menuitem">Program & Project Leadership<small>I own the structure, drive the execution, and leave the operating documentation behind.</small></a><a href="federal-nonprofit-delivery.html" role="menuitem">Federal & Nonprofit Delivery Support<small>Portfolio management, acquisition planning support, federal reporting, and audit-ready SOPs.</small></a><a href="services.html" role="menuitem" class="all">All services <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></li>
   <li><a href="about.html">About</a></li>
   <li><a class="btn btn-gold cta" href="contact.html" data-track="nav_cta">Book a Discovery Call</a></li>
  </ul></nav>
@@ -271,7 +272,7 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
 
 <footer class="foot"><div class="wrap">
  <div class="fcols">
-  <div class="col about"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="MaizeWay" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><p class="fa">We streamline the work. We don't add to it.<br>Independent project &amp; program management consulting by Eunice Maize, PMP, Business Solutions Architect. Bowie, MD & the DC metro.</p><address class="fa"><a href="tel:+13013466557">(301) 346-6557</a><br><a href="mailto:eunice@maizewaystrategy.com">eunice@maizewaystrategy.com</a></address></div>
+  <div class="col"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="MaizeWay" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><address class="fa"><a href="tel:+13013466557">(301) 346-6557</a><br><a href="mailto:eunice@maizewaystrategy.com">eunice@maizewaystrategy.com</a></address></div>
   <div class="col"><p class="fh">Services</p><ul><li><a href="program-project-leadership.html">Program & Project Leadership</a></li><li><a href="federal-nonprofit-delivery.html">Federal & Nonprofit Delivery Support</a></li><li><a href="services.html">All services</a></li></ul></div>
   <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About Eunice Maize</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://linkedin.com/in/eunicemaize" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="contact.html">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
