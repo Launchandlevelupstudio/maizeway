@@ -93,6 +93,7 @@ PERSONAL = "I'm direct and honest to the core. I tell clients what a project can
 CSS = open(os.path.join(HERE,"site.css")).read()
 JS  = open(os.path.join(HERE,"site.js")).read()
 ARROW = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+DD_ARROW = '<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 CARET = '<svg class="caret" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'
 CHECK = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>'
 
@@ -107,7 +108,7 @@ def header(active):
 <header class="nav" id="nav"><div class="wrap">
  <a class="brand" href="index.html" aria-label="{FIRM}, project management consulting"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></a>
  <nav aria-label="Primary"><ul class="menu">
-  <li{cls('services')}><a href="services.html" aria-haspopup="true" aria-expanded="false">Services {CARET}</a><div class="dd" role="menu">{dd}<a href="services.html" role="menuitem" class="all">All services {ARROW}</a></div></li>
+  <li{cls('services')}><a href="services.html" aria-haspopup="true" aria-expanded="false">Services {CARET}</a><div class="dd" role="menu">{dd}<a href="services.html" role="menuitem" class="all">All services {DD_ARROW}</a></div></li>
   <li{cls('about')}><a href="about.html">About</a></li>
   <li><a class="btn btn-gold cta" href="{BOOKING}" data-track="nav_cta">Book a Discovery Call</a></li>
  </ul></nav>
@@ -161,7 +162,7 @@ def footer():
     return f"""
 <footer class="foot"><div class="wrap">
  <div class="fcols">
-  <div class="col about"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
+  <div class="col about"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   <div class="col"><p class="fh">Services</p><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
   <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li><li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="{BOOKING}">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
