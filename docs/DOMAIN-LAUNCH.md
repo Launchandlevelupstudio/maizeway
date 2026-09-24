@@ -1,12 +1,14 @@
 # Domain launch checklist
 
-Until a live domain is registered, the site uses the placeholder `https://[maizeway.com]` in canonical, Open Graph, JSON-LD, sitemap, and form `_next` URLs. Replace that string (and related placeholders) when the domain is live.
+Canonical, Open Graph, JSON-LD, sitemap `<loc>`, and the contact form `_next` URL use `https://maizewaystrategy.com`.
+
+Pre-launch SEO stays locked: sitewide `noindex, nofollow` and `robots.txt` `Disallow: /` remain until a later indexing go-live.
 
 ## Files / tags to update
 
 | Location | What to change |
 |---|---|
-| `build.py` → `SITE_URL` | Set to `https://yourdomain.com` (no trailing slash) |
+| `build.py` → `SITE_URL` | `https://maizewaystrategy.com` (no trailing slash) |
 | `build.py` → `EMAIL` / `FORM_EMAIL` | Real mailbox once DNS/email exist |
 | `build.py` → `LINKEDIN` | Real profile URL (footer link appears automatically) |
 | All generated HTML | `link[rel=canonical]`, `og:url`, `og:image`, `twitter:image` |

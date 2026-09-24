@@ -7,7 +7,7 @@ HERO_B64 = open(os.path.join(HERE,"hero_b64.txt")).read().strip()
 ABOUT_B64 = open(os.path.join(HERE,"about_b64.txt")).read().strip()
 
 # ===================== CONFIG =====================
-SITE_URL   = "https://[maizeway.com]"          # set the real domain, no trailing slash
+SITE_URL   = "https://maizewaystrategy.com"          # set the real domain, no trailing slash
 FIRM       = "MaizeWay"
 FOUNDER    = "Eunice Maize"
 TITLE      = "PMP, Business Solutions Architect"
@@ -17,7 +17,7 @@ EMAIL      = "eunice@maizewaystrategy.com"
 FORM_EMAIL = "eunice@maizewaystrategy.com"      # FormSubmit destination
 CITY_AREA  = "Bowie, MD & the DC metro"
 TAGLINE    = "We streamline the work. We don't add to it."
-YEARS, CERTS = "12+", "PMP"
+YEARS, CERTS = "15", "PMP"
 LINKEDIN   = "https://linkedin.com/in/eunicemaize"
 BOOKING    = "contact.html"
 
@@ -85,7 +85,7 @@ BELIEFS = [
  "Systems save more than time; they save energy and produce consistent results.",
  "The best solution is the one that fits, not the popular one.",
 ]
-STORY = "Project management found me before I had a name for it. I've always been the person who looks at how something runs and immediately sees how it could run better. Over 15+ years across federal government, nonprofit, and consulting, I've watched smart, driven people struggle not because they lacked talent, but because they lacked the right systems and someone who could see the whole board. MaizeWay exists because that gap is real, and closing it is what I do best."
+STORY = "Project management found me before I had a name for it. I've always been the person who looks at how something runs and immediately sees how it could run better. Over 15 years across federal government, nonprofit, and consulting, I've watched smart, driven people struggle not because they lacked talent, but because they lacked the right systems and someone who could see the whole board. MaizeWay exists because that gap is real, and closing it is what I do best."
 WHERE = "Over my career, I've worked on projects across transit operations, federal program management, workforce development nonprofits, and medical membership organizations."
 PERSONAL = "Eunice is direct and honest to the core: she tells clients what a project can realistically deliver, then does the work to deliver it. Off the clock, she brings that same energy to her community, serving on her condominium board in Bowie, Maryland, and volunteering with PMI Washington DC, and she can usually be found planning her next trip across Asia or at the table for a game of mahjong."
 # ==========================================================================
@@ -258,7 +258,7 @@ home = f"""
 
 <section class="sec sec-stone" id="about" aria-labelledby="ab-h"><div class="wrap about">
  <div class="img"><img src="data:image/jpeg;base64,{ABOUT_B64}" alt="{FOUNDER}, founder of {FIRM}" width="600" height="899" loading="lazy"></div>
- <div class="t"><p class="kicker">Business Solutions Architect</p><h2 id="ab-h">{FOUNDER}, {CERTS}</h2><p class="sub">I'm a Business Solutions Architect with over 12 years of experience across federal government, nonprofit, and private consulting sectors — diagnosing what's broken, architecting what's missing, implementing solutions that stick.</p>
+ <div class="t"><p class="kicker">Business Solutions Architect</p><h2 id="ab-h">{FOUNDER}, {CERTS}</h2><p class="sub">I'm a Business Solutions Architect with over 15 years of experience across federal government, nonprofit, and private consulting sectors — diagnosing what's broken, architecting what's missing, implementing solutions that stick.</p>
   <a class="btn btn-dark" href="about.html">More About {FOUNDER}</a></div>
 </div></section>
 
@@ -360,7 +360,7 @@ contact = f"""
   <ol class="next"><li><b>I read what you sent</b> and respond within one business day.</li><li><b>We talk for 30 minutes.</b> You describe the situation, I tell you how I'd approach it.</li><li><b>If it's a fit, I send a scoped proposal</b> within three business days. If it isn't, I'll tell you and point you toward someone better suited.</li></ol>
   <div class="cinfo"><div><b>Phone</b><p><a href="tel:{PHONE_TEL}">{PHONE}</a></p></div><div><b>Email</b><p><a href="mailto:{EMAIL}">{EMAIL}</a></p></div><div><b>Serving</b><p>{CITY_AREA}</p></div></div></div>
  <form class="f" id="cform" data-form action="https://formsubmit.co/{FORM_EMAIL}" method="POST" novalidate>
-  <input type="hidden" name="_subject" value="New consultation request — {FIRM} website"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="{SITE_URL}/thank-you.html"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="_subject" value="New consultation request — {FIRM} website"><input type="hidden" name="_captcha" value="true"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="{SITE_URL}/thank-you.html"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
   <label>Name<input name="Name" autocomplete="name" required></label>
   <label>Email<input name="email" type="email" autocomplete="email" required></label>
   <label>Organization<input name="Organization" autocomplete="organization" required></label>
@@ -384,7 +384,7 @@ thankyou = f"""
 
 privacy = f"""
 {crumbs([("Privacy policy",None)])}
-<section class="sec"><div class="wrap prose"><h1>Privacy policy</h1><p><em>Last updated [date].</em></p>
+<section class="sec"><div class="wrap prose"><h1>Privacy policy</h1><p><em>Last updated September 23, 2026.</em></p>
 <h2>What is collected</h2><p>When you submit the contact form, {FIRM} collects the information you enter (name, email, organization, message) in order to respond to you.</p>
 <h2>How it is used</h2><p>To reply to your enquiry and to follow up about working together. Your information is not sold or shared.</p>
 <h2>Third parties</h2><p>Forms are delivered by FormSubmit. Fonts are served by Google Fonts.</p>
@@ -397,7 +397,7 @@ notfound = f"""
 
 # ------------------------------------------------------------ WRITE
 pages = [
- ("index.html", f"{FIRM} | Project Management Consulting", f"{FOUNDER} is a Business Solutions Architect with over 12 years of experience across federal government, nonprofit, and private consulting sectors. {CITY_AREA}.", "home", home, None, None),
+ ("index.html", f"{FIRM} | Project Management Consulting", f"{FOUNDER} is a Business Solutions Architect with over 15 years of experience across federal government, nonprofit, and private consulting sectors. {CITY_AREA}.", "home", home, None, None),
  ("services.html", f"Services | {FIRM}", "Program and project leadership, project recovery, and federal and nonprofit delivery support — scoped to the problem, not a tiered package.", "services", services, None, [("Services",None)]),
  ("about.html", f"About {FOUNDER} | {FIRM}", f"{FOUNDER}, {TITLE}. {TAGLINE}", "about", about, None, [("About",None)]),
  ("contact.html", f"Book a Free Discovery Call | {FIRM}", f"Book a free 30-minute discovery call with {FOUNDER}. We'll talk through your biggest operational challenges and figure out which engagement fits.", "contact", contact, None, [("Contact",None)]),
