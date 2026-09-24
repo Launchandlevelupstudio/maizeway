@@ -87,7 +87,7 @@ BELIEFS = [
 ]
 STORY = "Project management found me before I had a name for it. I've always been the person who looks at how something runs and immediately sees how it could run better. Over 15 years across federal government, nonprofit, and consulting, I've watched smart, driven people struggle not because they lacked talent, but because they lacked the right systems and someone who could see the whole board. MaizeWay exists because that gap is real, and closing it is what I do best."
 WHERE = "Over my career, I've worked on projects across transit operations, federal program management, workforce development nonprofits, and medical membership organizations."
-PERSONAL = "Eunice is direct and honest to the core: she tells clients what a project can realistically deliver, then does the work to deliver it. Off the clock, she brings that same energy to her community, serving on her condominium board in Bowie, Maryland, and volunteering with PMI Washington DC, and she can usually be found planning her next trip across Asia or at the table for a game of mahjong."
+PERSONAL = "I'm direct and honest to the core. I tell clients what a project can realistically deliver, then I do the work to deliver it. Off the clock, I bring that same energy to my community, serving on my condominium board in Bowie, Maryland, and volunteering with PMI Washington DC. You'll usually find me planning my next trip across Asia or at the table for a game of mahjong."
 # ==========================================================================
 
 CSS = open(os.path.join(HERE,"site.css")).read()
