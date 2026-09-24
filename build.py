@@ -81,10 +81,13 @@ METHOD = [
 ]
 
 BELIEFS = [
- "[Belief 1 — one opinion about projects Eunice will defend, in her own words.]",
- "[Belief 2 — from the questionnaire / conversation with Eunice.]",
- "[Belief 3 — from the questionnaire / conversation with Eunice.]",
+ "Clarity is a system, not a feeling.",
+ "Systems save more than time; they save energy and produce consistent results.",
+ "The best solution is the one that fits, not the popular one.",
 ]
+STORY = "Project management found me before I had a name for it. I've always been the person who looks at how something runs and immediately sees how it could run better. Over 15+ years across federal government, nonprofit, and consulting, I've watched smart, driven people struggle not because they lacked talent, but because they lacked the right systems and someone who could see the whole board. MaizeWay exists because that gap is real, and closing it is what I do best."
+WHERE = "Over my career, I've worked on projects across transit operations, federal program management, workforce development nonprofits, and medical membership organizations."
+PERSONAL = "Eunice is direct and honest to the core: she tells clients what a project can realistically deliver, then does the work to deliver it. Off the clock, she brings that same energy to her community, serving on her condominium board in Bowie, Maryland, and volunteering with PMI Washington DC, and she can usually be found planning her next trip across Asia or at the table for a game of mahjong."
 # ==========================================================================
 
 CSS = open(os.path.join(HERE,"site.css")).read()
@@ -309,30 +312,29 @@ def service_page(t, i):
 beliefs_html = "".join(f'<blockquote>{b}</blockquote>' for b in BELIEFS)
 about = f"""
 {crumbs([("About",None)])}
-<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">About</p><h1>{FOUNDER}, {CERTS}</h1><p class="lede">I'm a Business Solutions Architect with over 12 years of experience across federal government, nonprofit, and private consulting sectors.</p></div></section>
+<section class="hero hero-inner"><div class="ring r1" aria-hidden="true"></div><div class="wrap"><p class="kicker">About</p><h1>We streamline the work.<br>We don't add to it.</h1><p class="lede">{FOUNDER}, {CERTS} — Business Solutions Architect. {CITY_AREA}.</p></div></section>
 
 <section class="sec"><div class="wrap about">
  <div class="img"><img src="data:image/jpeg;base64,{ABOUT_B64}" alt="{FOUNDER}, founder of {FIRM}" width="600" height="899" loading="lazy"></div>
- <div class="t"><p class="kicker">Why {FIRM} exists</p><h2>[Headline — the moment she decided this practice needed to exist.]</h2>
-  <p class="sub">[The origin story, in her own words. Not a career summary — the specific moment or pattern that led here. Example shape only: "I spent {YEARS} years watching capable teams miss dates for reasons that had nothing to do with effort." Eunice supplies the real version — this is the paragraph readers remember.]</p></div>
+ <div class="t"><div class="name-lockup"><img class="mono-badge" src="images/logo-mw-monogram.png" srcset="images/logo-mw-monogram-sm.png 160w, images/logo-mw-monogram.png 512w" sizes="128px" alt="{FIRM} monogram" width="128" height="128"><div><p class="kicker">Why {FIRM} exists</p><h2>{FOUNDER}, {CERTS}</h2></div></div>
+  <p class="sub">{STORY}</p></div>
 </div></section>
 
 <section class="sec sec-stone"><div class="wrap">
  <div class="head"><div class="t"><h2>Where I've worked.</h2></div></div>
- <p class="sub" style="max-width:760px">[Federal, nonprofit, and consulting — what she actually did in each: program types, scale, the kind of problems. Named organizations if she can name them; descriptive if she can't, e.g. "a federal health agency," "a national education nonprofit."]</p>
+ <p class="sub" style="max-width:760px">{WHERE}</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
- <div class="head"><div class="t"><h2>How I think about projects.</h2><p class="sub">Stated as opinions, not platitudes — three or four beliefs I'll defend.</p></div></div>
+ <div class="head"><div class="t"><h2>How I think about projects.</h2></div></div>
  <div class="beliefs">{beliefs_html}</div>
 </div></section>
 
 <section class="sec sec-stone"><div class="wrap">
  <div class="head"><div class="t"><h2>Credentials.</h2></div></div>
  <ul class="creds">
-  <li><b>PMP</b> — Project Management Institute. <span class="fine">[Certification number and issue date needed.]</span></li>
-  <li><b>MPA</b> — Bowie State University. <span class="fine">[Graduation year needed.]</span></li>
-  <li><b>BS</b> — University of Maryland. <span class="fine">[Degree title and graduation year needed.]</span></li>
+  <li><b>PMP</b> — Project Management Institute.</li>
+  <li><b>MPA</b> — Bowie State University.</li>
  </ul>
 </div></section>
 
@@ -343,7 +345,7 @@ about = f"""
 
 <section class="sec"><div class="wrap" style="max-width:700px">
  <p class="kicker">A little about me</p>
- <p class="sub">[Two or three sentences, human and specific — {CITY_AREA}, something real, not a hobbies list.]</p>
+ <p class="sub">{PERSONAL}</p>
 </div></section>
 
 {cta_band()}
@@ -397,7 +399,7 @@ notfound = f"""
 pages = [
  ("index.html", f"{FIRM} | Project Management Consulting", f"{FOUNDER} is a Business Solutions Architect with over 12 years of experience across federal government, nonprofit, and private consulting sectors. {CITY_AREA}.", "home", home, None, None),
  ("services.html", f"Services | {FIRM}", "Program and project leadership, project recovery, and federal and nonprofit delivery support — scoped to the problem, not a tiered package.", "services", services, None, [("Services",None)]),
- ("about.html", f"About {FOUNDER} | {FIRM}", f"{FOUNDER}, {TITLE}: {YEARS} years leading programs across federal, nonprofit, and consulting environments.", "about", about, None, [("About",None)]),
+ ("about.html", f"About {FOUNDER} | {FIRM}", f"{FOUNDER}, {TITLE}. {TAGLINE}", "about", about, None, [("About",None)]),
  ("contact.html", f"Book a Free Discovery Call | {FIRM}", f"Book a free 30-minute discovery call with {FOUNDER}. We'll talk through your biggest operational challenges and figure out which engagement fits.", "contact", contact, None, [("Contact",None)]),
 ]
 for i,t in enumerate(TRACKS):
