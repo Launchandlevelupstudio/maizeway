@@ -90,6 +90,10 @@ li.open>.dd{display:flex}
 .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
 .about .img{border-radius:4px;overflow:hidden;border:1px solid rgba(197,151,58,.25)}.about .img img{width:100%;height:auto;display:block}
 .about .t{display:flex;flex-direction:column;gap:18px}.about .btn{align-self:flex-start;margin-top:6px}
+.name-lockup{display:flex;align-items:center;gap:20px}
+.name-lockup .kicker{margin-bottom:6px}
+.name-lockup h2{font-size:clamp(28px,3.2vw,40px)}
+.mono-badge{width:128px;height:auto;flex:none}
 .beliefs{display:flex;flex-direction:column;gap:24px;max-width:760px}
 .beliefs blockquote{margin:0;font-family:var(--serif);font-size:24px;font-style:italic;color:var(--navy);border-left:2px solid var(--gold);padding-left:24px;line-height:1.4}
 .creds{display:flex;flex-direction:column;gap:16px;max-width:640px}.creds li{font-size:15px;color:var(--text-mid);padding-bottom:14px;border-bottom:1px solid rgba(197,151,58,.2)}.creds b{color:var(--navy)}
@@ -155,6 +159,7 @@ form.f input[aria-invalid=true],form.f textarea[aria-invalid=true]{border-color:
  .fcols{grid-template-columns:1fr}
  form.f{grid-template-columns:1fr;padding:24px}.hero .acts{flex-direction:column}
  .btn{width:100%}.menu .cta,.stickybar .btn{width:auto}.card{padding:26px}
+ .mono-badge{width:96px}.name-lockup{gap:14px;align-items:flex-start}
  .stickybar{display:flex}
 }
 
