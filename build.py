@@ -102,7 +102,7 @@ def header(active):
     return f"""
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav"><div class="wrap">
- <a class="brand" href="index.html" aria-label="{FIRM} home"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></a>
+ <a class="brand" href="index.html" aria-label="{FIRM}, project management consulting"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></a>
  <nav aria-label="Primary"><ul class="menu">
   <li{cls('services')}><a href="services.html" aria-haspopup="true" aria-expanded="false">Services {CARET}</a><div class="dd" role="menu">{dd}<a href="services.html" role="menuitem" class="all">All services {ARROW}</a></div></li>
   <li{cls('about')}><a href="about.html">About</a></li>
@@ -112,7 +112,7 @@ def header(active):
  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
- <div class="top"><a class="brand" href="index.html" aria-label="{FIRM} home"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+ <div class="top"><a class="brand" href="index.html" aria-label="{FIRM}, project management consulting"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></a><button class="burger" id="mclose" aria-label="Close menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
  <nav aria-label="Mobile">
   <button class="row" data-acc aria-expanded="false" aria-controls="msub"><span>Services</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
   <div class="sub" id="msub">{mob}<a href="services.html">All services</a></div>
@@ -158,7 +158,7 @@ def footer():
     return f"""
 <footer class="foot"><div class="wrap">
  <div class="fcols">
-  <div class="col about"><p class="fb"><img class="brand-logo footer-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
+  <div class="col about"><p class="fb"><span class="brand-lockup"><span class="brand-mark"><img class="brand-logo" src="images/logo-maizeway-capital.png" alt="{FIRM}" width="1035" height="231"></span><span class="tagline">PROJECT MANAGEMENT CONSULTING</span></span></p><p class="fa">{TAGLINE}<br>Independent project &amp; program management consulting by {FOUNDER}, {TITLE}. {CITY_AREA}.</p><address class="fa"><a href="tel:{PHONE_TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   <div class="col"><p class="fh">Services</p><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
   <div class="col"><p class="fh">Company</p><ul><li><a href="about.html">About {FOUNDER}</a></li><li><a href="contact.html">Contact</a></li><li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li></ul></div>
   <div class="col"><p class="fh">Start here</p><ul><li><a href="{BOOKING}">Schedule a consultation</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
