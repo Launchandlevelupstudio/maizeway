@@ -25,7 +25,8 @@ p{margin:0}a{color:inherit;text-decoration:none}img{max-width:100%;display:block
 .nav .wrap{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;min-width:0;color:#fff}
 .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;line-height:1;min-width:0}
-.brand-mark{display:block;position:relative;width:min(250px,44vw);aspect-ratio:1035/191;overflow:hidden;flex:none}
+/* Flat crop at 191 cuts the gold arrow (tip ends image y=224) because PATHWAYS starts at y=191. 1035/240 shows the tip with padding; the L-clip hides the slogan (x<=749) and keeps the arrow (x>=804) below image y=180. */
+.brand-mark{display:block;position:relative;width:min(250px,44vw);aspect-ratio:1035/240;overflow:hidden;flex:none;clip-path:polygon(0 0,100% 0,100% 100%,75% 100%,75% 75%,0 75%)}
 .brand-mark .brand-logo{position:absolute;top:0;left:0;width:100%;height:auto;max-width:none;object-fit:fill;object-position:left top}
 .brand-lockup .tagline{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .foot .brand-mark{width:min(220px,70vw)}
