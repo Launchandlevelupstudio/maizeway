@@ -112,7 +112,6 @@ def header(active):
   <li{cls('about')}><a href="about.html">About</a></li>
   <li><a class="btn btn-gold cta" href="{BOOKING}" data-track="nav_cta">Book a Discovery Call</a></li>
  </ul></nav>
- <a class="nav-phone" href="tel:{PHONE_TEL}">{PHONE}</a>
  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
