@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# Pre-launch: site has placeholder copy. Flip to Allow + sitemap at go-live.
-# Sitemap: https://maizewaystrategy.com/sitemap.xml
+Sitemap: https://maizewaystrategy.com/sitemap.xml

@@ -1,4 +1,4 @@
-import os, json, html, datetime
+import os, json, html
 OUT = "/mnt/user-data/outputs/maizeway-site"
 os.makedirs(OUT, exist_ok=True)
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -185,15 +185,16 @@ def page(fn, title, desc, active, body, extra_schema=None, crumb=None, noindex=F
     if crumb:
         sch["@graph"].append({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":f"{SITE_URL}/{h}"} for i,(n,h) in enumerate([("Home","index.html")]+[(t,h or fn) for t,h in crumb])]})
     if extra_schema: sch["@graph"] += extra_schema
-    robots = '<meta name="robots" content="noindex, nofollow">'  # pre-launch; remove at go-live
+    robots = '<meta name="robots" content="noindex, nofollow">' if noindex else ''
+    loc = f"{SITE_URL}/{'' if fn == 'index.html' else fn}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">{robots}
-<link rel="canonical" href="{SITE_URL}/{fn if fn!='index.html' else ''}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE_URL}/{fn}"><meta property="og:image" content="{SITE_URL}/og-image.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{loc}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="{esc(FIRM)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{loc}"><meta property="og:image" content="{SITE_URL}/og-image.jpg"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#111e32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="images/logo-mw-mark.png" type="image/png">
@@ -412,9 +413,9 @@ open(os.path.join(OUT,"thank-you.html"),"w").write(page("thank-you.html",f"Thank
 open(os.path.join(OUT,"privacy.html"),"w").write(page("privacy.html",f"Privacy Policy | {FIRM}","How this site handles your information.","",privacy,crumb=[("Privacy policy",None)]))
 open(os.path.join(OUT,"404.html"),"w").write(page("404.html",f"Page not found | {FIRM}","Page not found.","",notfound,noindex=True))
 
-today = datetime.date.today().isoformat()
-urls = [p[0] for p in pages]
+today = "2026-09-30"
+urls = ["index.html", "about.html", "services.html", "federal-nonprofit-delivery.html", "program-project-leadership.html", "contact.html", "privacy.html"]
 open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f'  <url><loc>{SITE_URL}/{u if u!="index.html" else ""}</loc><lastmod>{today}</lastmod><priority>{"1.0" if u=="index.html" else "0.8"}</priority></url>\n' for u in urls)+'</urlset>\n')
-open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thank-you.html\nSitemap: {SITE_URL}/sitemap.xml\n")
+open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
 open(os.path.join(OUT,"favicon.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#111e32" stroke="#c5973a" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="20" fill="#c5973a">MW</text></svg>')
-print("built", len(urls)+3, "pages")
+print("built", len(pages)+3, "pages")
